@@ -1,0 +1,63 @@
+{
+  "name": "sonara",
+  "productName": "Sonara",
+  "version": "0.1.0",
+  "description": "Sonara — local music player with My Wave, playlists and auto-update.",
+  "author": {
+    "name": "Aexa3848",
+    "email": "alexkurtovqwer@gmail.com"
+  },
+  "license": "MIT",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "lint": "node scripts/lint.js",
+    "build": "electron-builder --win",
+    "publish": "electron-builder --win --publish always"
+  },
+  "dependencies": {
+    "electron-store": "8.2.0",
+    "electron-updater": "6.3.9",
+    "music-metadata": "7.14.0"
+  },
+  "devDependencies": {
+    "electron": "31.7.6",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "com.aexa3848.sonara",
+    "productName": "Sonara",
+    "asar": true,
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "Sonara-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "allowElevation": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Sonara"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Aexa3848",
+        "repo": "sonara-app",
+        "releaseType": "release"
+      }
+    ]
+  }
+}
