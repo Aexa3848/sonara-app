@@ -12,11 +12,14 @@ const isDev = !app.isPackaged;
 
 function pathToFileUrl(filePath) {
   // Cross-platform file URL builder. On Windows: C:\foo\bar -> file:///C:/foo/bar
+  // encodeURI does not escape '#' or '?', which would otherwise be parsed as
+  // URL fragment/query and break playback for files like "Track #1.mp3".
   const normalized = filePath.replace(/\\/g, '/');
+  const encoded = encodeURI(normalized).replace(/#/g, '%23').replace(/\?/g, '%3F');
   if (/^[A-Za-z]:/.test(normalized)) {
-    return 'file:///' + encodeURI(normalized);
+    return 'file:///' + encoded;
   }
-  return 'file://' + encodeURI(normalized);
+  return 'file://' + encoded;
 }
 
 protocol.registerSchemesAsPrivileged([
