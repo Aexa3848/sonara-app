@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --tw-ring-offset-color: transparent;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+  }
+
+  ::selection {
+    background: rgba(255, 61, 113, 0.4);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.14);
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-bg-surface backdrop-blur-xl border border-line shadow-sticker;
+  }
+
+  .glass-strong {
+    @apply bg-bg-surface-strong backdrop-blur-2xl border border-line-strong;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-lg px-3 py-2 text-fg-muted hover:text-fg hover:bg-bg-surface transition-colors duration-200 ease-soft;
+  }
+
+  .btn-pill {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium bg-bg-surface hover:bg-bg-surface-strong border border-line text-fg transition-all duration-200 ease-soft;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold bg-accent-gradient text-white shadow-glow hover:scale-[1.02] active:scale-[0.99] transition-transform duration-200 ease-soft;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-fg-muted hover:text-fg hover:bg-bg-surface transition-all duration-200 ease-soft cursor-pointer;
+  }
+
+  .nav-item-active {
+    @apply text-fg bg-bg-surface-strong;
+  }
+
+  .label-overline {
+    @apply text-label uppercase tracking-[0.12em] text-fg-subtle font-medium;
+  }
+}
+
+@layer utilities {
+  .no-drag {
+    -webkit-app-region: no-drag;
+  }
+  .drag {
+    -webkit-app-region: drag;
+  }
+
+  .gradient-text {
+    background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .accent-gradient-text {
+    background: linear-gradient(135deg, #ff3d71 0%, #5e6ad2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
