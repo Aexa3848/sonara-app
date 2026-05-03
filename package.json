@@ -1,0 +1,75 @@
+{
+  "name": "sonara",
+  "productName": "Sonara",
+  "version": "1.0.0",
+  "description": "Sonara — hybrid Spotify + SoundCloud music player.",
+  "author": {
+    "name": "Aexa3848",
+    "email": "alexkurtovqwer@gmail.com"
+  },
+  "license": "MIT",
+  "main": "out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "start": "electron-vite preview",
+    "build": "electron-vite build && electron-builder --win nsis --publish never",
+    "lint": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "publish": "electron-vite build && electron-builder --win --publish always"
+  },
+  "dependencies": {
+    "electron-store": "8.2.0",
+    "electron-updater": "6.3.9",
+    "zustand": "4.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "20.16.10",
+    "@types/react": "18.3.11",
+    "@types/react-dom": "18.3.0",
+    "@vitejs/plugin-react": "4.3.2",
+    "autoprefixer": "10.4.20",
+    "electron": "31.7.6",
+    "electron-builder": "25.1.8",
+    "electron-vite": "2.3.0",
+    "postcss": "8.4.47",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tailwindcss": "3.4.13",
+    "tailwindcss-animate": "1.0.7",
+    "typescript": "5.6.2",
+    "vite": "5.4.8"
+  },
+  "build": {
+    "appId": "com.aexa3848.sonara",
+    "productName": "Sonara",
+    "asar": true,
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "buildResources",
+      "output": "dist-installer"
+    },
+    "win": {
+      "target": ["nsis"],
+      "artifactName": "Sonara-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "allowElevation": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Sonara"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Aexa3848",
+        "repo": "sonara-app",
+        "releaseType": "release"
+      }
+    ]
+  }
+}
